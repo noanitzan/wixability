@@ -605,7 +605,6 @@ button{border-radius:6px}
 .experience-sidebar .sim-controls label{font-size:14px;font-weight:600}
 .experience-sidebar .sim-help{font-size:14px;color:#58636b;line-height:1.4}
 .experience-sidebar select#sim{height:40px;border-color:#a9b0b6;border-radius:6px;font-size:14px}
-.experience-sidebar select#sim:disabled{opacity:1;color:#52605e;background-color:#eff0f3;border-color:#c8cdd1;cursor:default}
 .experience-sidebar .sidebar-task-panel{border:1px solid #baa5d4;border-radius:12px;padding:16px 14px;background:#fff;box-shadow:0 3px 12px #41286006;margin-top:4px}
 .task-heading-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--wa-line)}
 .experience-sidebar .sidebar-task-panel #task-heading{font-size:21px;line-height:1.25;color:var(--wa-ink);border:0;padding:0;margin:0;letter-spacing:-.4px}
@@ -1130,7 +1129,7 @@ function renderReturnsTask(){
   return;
  }
  const complete=returnsStep==='complete';
- if(!complete)setMode('grayscale');$('sim').disabled=!complete;
+
  setReminder(complete?'The difference is in the details!':'Returns policy','');
  $('reminder-content').innerHTML=complete?`<p>An underline helps people recognize links without relying on color alone.</p>`:`<ol><li class="returns-task-step">You want to exchange your order. Find out how.</li></ol><div class="returns-hint-help"><p><strong>Need a hint?</strong></p><button type="button" id="returns-hint-toggle" aria-expanded="${returnsHint}" aria-controls="returns-hint"><span class="hint-icon" aria-hidden="true">?</span><span>${returnsHint?'Hide hint':'Show hint'}</span></button><p id="returns-hint" ${returnsHint?'':'hidden'} style="margin-top:12px">Look for the words 'Returns policy' in the paragraph below the order details.</p></div>`;
  $('returns-hint-toggle')?.addEventListener('click',()=>{returnsHint=!returnsHint;$('returns-hint').hidden=!returnsHint;$('returns-hint-toggle').lastElementChild.textContent=returnsHint?'Hide hint':'Show hint';$('returns-hint-toggle').setAttribute('aria-expanded',String(returnsHint))});
